@@ -5,7 +5,16 @@ const Appapi = (() => {
     const getTodos = () =>
         fetch([baseurl, path].join("/")).then((response) => response.json());
 
-    const deleteTodo = id =>
+    const addTodo = (todo) =>
+        fetch([baseurl, path].join("/"), {
+            method: "POST",
+            body: JSON.stringify(todo),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        }).then((response) => response.json());
+
+    const deleteTodo = (id) =>
         fetch([baseurl, path, id].join("/"), {
             method: "DELETE",
         });
@@ -13,6 +22,7 @@ const Appapi = (() => {
     return {
         deleteTodo,
         getTodos,
+        addTodo,
     };
 })();
 
@@ -21,6 +31,7 @@ const View = (() => {
     const domstr = {
         todolist: "#todolist__container",
         deletebtn: ".delete_btn",
+        inputbox: ".todolist__input",
     };
     const render = (element, tmp) => {
         element.innerHTML = tmp;
@@ -50,11 +61,10 @@ const View = (() => {
 // ~~~~~~~~~~~~~~~model~~~~~~~~~~~~~~~~~~~~~
 const Model = ((api, view) => {
     class Todo {
-        constructor(userId, id, title, completed) {
-            this.userId = userId;
-            this.id = id;
+        constructor(title) {
+            this.userId = 20;
             this.title = title;
-            this.completed = completed;
+            this.completed = false;
         }
     }
 
@@ -68,30 +78,29 @@ const Model = ((api, view) => {
         set todolist(newdata) {
             this.#todolist = newdata;
 
+            // render the todolist
             const ele = document.querySelector(view.domstr.todolist);
             const tmp = view.createTmp(this.#todolist);
             view.render(ele, tmp);
 
-            const deletebtns = document.querySelectorAll(view.domstr.deletebtn);
-            deletebtns.forEach((btn) => {
-                btn.addEventListener("click", (event) => {
-                    this.todolist = this.#todolist.filter(
-                        (todo) => +todo.id !== +event.target.id
-                    );
-                    api.deleteTodo(id);
-                });
-            });
+            // get all delete btns
+            // add eventlistener to each btn
+            // this.todolist = this.#todolist.filter((todo) => {
+            //     return +todo.id !== +event.target.id;
+            // });
         }
     }
 
     const deleteTodo = api.deleteTodo;
     const getTodos = api.getTodos;
+    const addTodo = api.addTodo;
 
     return {
         Todo,
         State,
+        addTodo,
         getTodos,
-        deleteTodo
+        deleteTodo,
     };
 })(Appapi, View);
 
@@ -99,13 +108,43 @@ const Model = ((api, view) => {
 const Controller = ((model, view) => {
     const state = new model.State();
 
+    const addTodo = () => {
+        const inputbox = document.querySelector(view.domstr.inputbox);
+
+        inputbox.addEventListener("keyup", (event) => {
+            if (event.key === "Enter") {
+                const todo = new model.Todo(event.target.value);
+                model.addTodo(todo).then(newtodo => {
+                    state.todolist = [newtodo, ...state.todolist];
+                    event.target.value = '';
+                });
+            }
+        });
+    };
+
+    const deletTodo = () => {
+        const ele = document.querySelector(view.domstr.todolist);
+        ele.addEventListener("click", (event) => {
+            state.todolist = state.todolist.filter((todo) => {
+                return +todo.id !== +event.target.id;
+            });
+            model.deleteTodo(event.target.id);
+        });
+    };
+
     const init = () => {
         model.getTodos().then((data) => {
             state.todolist = data;
         });
     };
 
-    return { init };
+    const bootstrap = () => {
+        init();
+        deletTodo();
+        addTodo();
+    };
+
+    return { bootstrap };
 })(Model, View);
 
-Controller.init();
+Controller.bootstrap();
