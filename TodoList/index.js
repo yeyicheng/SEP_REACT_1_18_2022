@@ -1,5 +1,6 @@
 const Appapi = (() => {
-    baseurl = "https://jsonplaceholder.typicode.com";
+    // baseurl = "https://jsonplaceholder.typicode.com";
+    baseurl = 'http://localhost:3000';
     path = "todos";
 
     const getTodos = () =>
