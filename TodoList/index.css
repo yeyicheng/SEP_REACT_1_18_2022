@@ -1,0 +1,110 @@
+:root {
+    --height-header: 60px;
+    --height-todolist: 300px;
+    --height-todolist-header: 30px;
+
+    --width-todolist: 400px;
+
+    --color-green: rgb(30, 255, 0);
+    --color-red-button: rgb(148, 21, 21);
+    --color-red-li-hover: rgb(27, 172, 8);
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Comforter", cursive;
+}
+
+.header {
+    height: var(--height-header);
+    line-height: var(--height-header);
+    width: 100%;
+    /* background-color: aqua; */
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    padding-left: 10px;
+    background: linear-gradient(to right, black, var(--color-green));
+    color: white;
+}
+
+.content {
+    background-color: blanchedalmond;
+    height: calc(100% - var(--height-header));
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todolist {
+    background-color: var(--color-green);
+    height: var(--height-todolist);
+    width: var(--width-todolist);
+
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5px;
+}
+
+.todolist__header,
+.todolist__input,
+ul li {
+    height: var(--height-todolist-header);
+    line-height: var(--height-todolist-header);
+    width: 100%;
+
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    padding-left: 10px;
+
+    list-style: none;
+    border: none;
+    outline: none;
+}
+.todolist__header {
+    text-align: center;
+    font-size: 1.4rem;
+}
+ul {
+    overflow: auto;
+    height: calc(var(--height-todolist) - var(--height-todolist-header) * 2);
+}
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+ul li:hover {
+    background-color: var(--color-red-li-hover);
+}
+
+ul li span {
+    height: 100%;
+    line-height: var(--height-todolist-header);
+    overflow: hidden;
+    width: 90%;
+}
+ul li button {
+    color: red;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 1.2rem;
+}
+ul li button:hover {
+    font-size: 1.4rem;
+}
+ul li button:active {
+    font-size: 1.1rem;
+}
