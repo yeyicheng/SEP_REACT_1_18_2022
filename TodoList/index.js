@@ -15,7 +15,7 @@ const View = (() => {
         arr.forEach((ele) => {
             tmp += `
                 <li>
-                    <span>${ele.title}</span>
+                    <span>${ele.id} ${ele.title}</span>
                     <button class="delete_btn" id="${ele.id}">
                         X
                     </button>
@@ -88,9 +88,9 @@ const Controller = ((model, view) => {
         inputbox.addEventListener("keyup", (event) => {
             if (event.key === "Enter") {
                 const todo = new model.Todo(event.target.value);
-                model.addTodo(todo).then(newtodo => {
+                model.addTodo(todo).then((newtodo) => {
                     state.todolist = [newtodo, ...state.todolist];
-                    event.target.value = '';
+                    event.target.value = "";
                 });
             }
         });
@@ -99,10 +99,14 @@ const Controller = ((model, view) => {
     const deletTodo = () => {
         const ele = document.querySelector(view.domstr.todolist);
         ele.addEventListener("click", (event) => {
-            state.todolist = state.todolist.filter((todo) => {
-                return +todo.id !== +event.target.id;
-            });
-            model.deleteTodo(event.target.id);
+
+            if (event.target.id !== '') {
+                state.todolist = state.todolist.filter((todo) => {
+                    return +todo.id !== +event.target.id;
+                });
+                console.log(event.target.id);
+                model.deleteTodo(event.target.id);
+            }
         });
     };
 

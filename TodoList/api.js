@@ -1,6 +1,6 @@
 export const Appapi = (() => {
     // baseurl = "https://jsonplaceholder.typicode.com";
-    const baseurl = 'http://localhost:3000';
+    const baseurl = "http://localhost:3000";
     const path = "todos";
 
     const getTodos = () =>
@@ -16,9 +16,7 @@ export const Appapi = (() => {
         }).then((response) => response.json());
 
     const deleteTodo = (id) =>
-        fetch([baseurl, path, id].join("/"), {
-            method: "DELETE",
-        });
+        fetch([baseurl, path, id].join("/"), { method: "DELETE" });
 
     return {
         deleteTodo,
