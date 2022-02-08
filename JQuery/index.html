@@ -12,10 +12,36 @@
     <script>
       class PQuery {
         constructor(selector) {
-          this.element = document.querySelector(selector);
+          if (selector === document || selector === window) {
+            this.elements = [selector];
+          } else {
+            this.elements = document.querySelectorAll(selector);
+          }
         }
         html(templateStr) {
-          this.element.innerHTML = templateStr;
+          this.elements.forEach((element) => {
+            element.innerHTML = templateStr;
+          });
+          return this;
+        }
+        hide() {
+          this.elements.forEach((element) => {
+            element.preDisplay = element.style.display;
+            element.style.display = 'none';
+          });
+          return this;
+        }
+        show() {
+          this.elements.forEach((element) => {
+            element.style.display = element.preDisplay;
+          });
+          return this;
+        }
+        on(eventType, cb) {
+          this.elements.forEach((element) => {
+            element.addEventListener(eventType, cb);
+          });
+          return this;
         }
       }
 
@@ -26,17 +52,57 @@
     <title>JQuery</title>
   </head>
   <body>
+    <style>
+      #banner-message {
+        display: inline-block;
+      }
+    </style>
     <button class="continue">My continue Button</button>
     <button class="continue">My continue Button 2</button>
 
     <button class="btn2">BUtton 2</button>
+    <h1 id="banner-message">Hidden BOX</h1>
+    <section id="button-container">
+      <div>
+        <button>Show</button>
+      </div>
+    </section>
     <script>
       //   console.log($$('button.continue').html);
       //   console.log($$('button.btn2').html);
       //   console.log($$('button.btn2').html === $$('button.continue').html);
 
-      $$('button.continue').html('Next Step...');
+      //$$('button.continue').html('Next Step...');
       //   $$('button.btn2').html('Next Step 3...');
+      document.querySelector('#banner-message').style.display = 'flex';
+
+      var hiddenBox = $$('#banner-message')
+        .html('Changed')
+        .on('click', () => {
+          alert('changed');
+        });
+      //   hiddenBox.hide();
+      //   $$('#button-container button').on('click', function (event) {
+      //     //alert('click');
+      //     hiddenBox.show();
+      //   });
+      //   $$(window).on('click', () => {
+      //     alert('click');
+      //   });
+
+      //   const $$$ = () => {};
+      //   console.dir($$$);
+
+      //   $$$.ajax = () => {
+      //     console.log('worked');
+      //   };
+
+      //   $$$.ajax({
+      //     url: 'https://jsonplaceholder.typicode.com/todos/1',
+      //     success: function (result) {
+      //       console.log(result);
+      //     },
+      //   });
     </script>
   </body>
 </html>
