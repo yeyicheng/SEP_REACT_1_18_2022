@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer async></script>
+    <script defer async>
+      console.log('hello');
+      let element2 = document.querySelector('h1');
+      console.log('test=====', element2);
+    </script>
+
+    <style>
+      :root {
+        --header-height: 65px;
+        --footer-height: 65px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+      }
+      .app__header {
+        height: var(--header-height);
+        background-color: #20232a;
+        color: #ffffff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+      }
+      .app__content {
+        height: 100%;
+        margin-top: var(--header-height);
+        background-color: blue;
+      }
+      .app__footer {
+        height: var(--footer-height);
+        background-color: #20232a;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app__header">HEADER</div>
+    <main class="app__content">MAIN</main>
+    <footer class="app__footer">FOOTER</footer>
+  </body>
+</html>
