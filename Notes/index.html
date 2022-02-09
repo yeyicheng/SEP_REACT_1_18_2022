@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      class PQuery {
+        constructor(selector) {
+          this.elements = document.querySelectorAll(selector);
+        } 
+        html(templateStr) {
+          this.elements.forEach(element => {
+            element.innerHTML = templateStr;
+          });
+        }
+      }
+
+      const $$ = (selector) => {
+        return new PQuery(selector);
+      };
+    </script>
+    <title>JQuery</title>
+  </head>
+  <body>
+    <button class="continue">My continue Button</button>
+    <button class="continue">My continue Button 2</button>
+
+    <button class="btn2">BUtton 2</button>
+    <script>
+      //   console.log($$('button.continue').html);
+      //   console.log($$('button.btn2').html);
+      //   console.log($$('button.btn2').html === $$('button.continue').html);
+
+      $$('button.continue').html('Next Step...');
+      //   $$('button.btn2').html('Next Step 3...');
+    </script>
+  </body>
+</html>
