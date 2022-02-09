@@ -1,0 +1,89 @@
+:root {
+  --height-header: 60px;
+  --height-todolist: 300px;
+  --height-todolist-header: 30px;
+
+  --width-todolist: 400px;
+
+  --color-green: rgb(30, 255, 0);
+  --color-red-button: rgb(148, 21, 21);
+  --color-red-li-hover: rgb(27, 172, 8);
+}
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing: inherit
+}
+
+html{
+    font-size: 62.25%;
+}
+
+body{
+    font-size: 1.6rem;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+
+/* CSS RESET ABOVE */
+
+table {
+    margin: 10rem auto;
+    width: 80%;
+    justify-content: space-around;
+  }
+
+  td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .save {
+    display: none;
+  }
+
+
+
+  .addBtn {
+    position: relative;
+    top: 9rem;
+    left: 11.5rem;
+    background-color: #1a1b1a;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .addBtn:hover {
+    filter: brightness(1.3);
+    box-shadow: 3px 3px 10px rgba(15, 15, 15, 0.4);
+  }
+
+
+
+  #wrapper {
+      overflow: scroll;
+      height: 80vh;
+  }
+
+
+
+  .save, .delete, .edit {
+    border: none;
+    background-color: transparent;
+  }
+
