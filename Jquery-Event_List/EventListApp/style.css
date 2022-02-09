@@ -1,0 +1,66 @@
+:root{
+    --color-primary: #0d6efd;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#event__add__input__container{
+    visibility: hidden;
+}
+
+.events_table, .addEvent-btn{
+    margin: auto;
+}
+
+.table_header{
+    width: 800px;
+    padding: 10px 0;
+    margin: auto;
+
+}
+
+.event_table_container{
+    margin: 5% 5%;
+    font-size: 1.5rem;
+}
+
+#addEvent-btn{
+    color: var(--color-primary);
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn{
+    color: var(--color-primary);
+    border: none;
+    background: none;
+}
+
+th{
+   font-size: 16px;
+   text-align: left;
+}
+
+td{
+    width: 200px;
+}
+input{
+    width: 150px;
+    padding-right: 20px;
+    padding: 2.5px;
+    box-sizing: content-box;
+}
+
+button{
+    cursor: pointer;
+}

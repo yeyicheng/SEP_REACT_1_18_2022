@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventList</title>
+  <link rel="stylesheet" href="style.css" />
+  <script async src="index.js"></script>
+</head>
+
+<body>
+
+  <section class="event_table_container">
+    <table class="events_table">
+      <header class="table_header">
+        <button id="addEvent-btn"
+        onclick="document.getElementById('event__add__input__container').style.visibility='visible';"
+        >Add New</button>
+      </header>
+      <tr class="row_titles">
+        <th>Event name</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Actions</th>
+      </tr>
+      <tbody id="event__container">
+        <!-- GET from API , populates table with DB data-->
+      </tbody>
+      <tr id="event__add__input__container">
+        <td>
+          <input id="event__add__name__input">
+        </td>
+        <td>
+          <input id="event__add__start__date__input" type="date">
+        </td>
+        <td>
+          <input id="event__add__end__date__input" type="date" >
+        </td>
+        <td>
+          <button id="event__add__submit" class="btn">Save</button>
+          <button 
+          onclick="document.getElementById('event__add__input__container').style.visibility='hidden'"
+          id="event__input__close" class="btn">Close</button>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+</body>
+
+</html>

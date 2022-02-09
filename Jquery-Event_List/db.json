@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "eventName": "TEST-7",
+      "startDate": "1643414400000",
+      "endDate": "1643500800000",
+      "id": 3
+    },
+    {
+      "eventName": "TEST-1",
+      "startDate": "1643846400000",
+      "endDate": "1644796800000",
+      "id": 4
+    }
+  ]
+}
