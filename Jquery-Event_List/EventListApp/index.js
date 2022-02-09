@@ -4,31 +4,29 @@ const connect = (() => {
     url = "http://localhost:3000/events";
 
     const getEvents = () =>
-        fetch(url).then((response) => response.json());
+        $.ajax({
+            url: url,
+        });
 
     const addEvent = (event) =>
-        fetch(url, {
-            method: "POST",
-            body: JSON.stringify(event),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-        }).then((response) => response.json());
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: event,
+        });
 
     const deleteEvent = id =>
-        fetch([url, id].join("/"), {
-            method: "DELETE",
+        $.ajax({
+            type: "DELETE",
+            url: [url, id].join("/"),
         });
 
     const editEvent = event =>
-        fetch([url, event.id].join("/"), {
-            method: "PUT",
-            body: JSON.stringify(event),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-        }).then((response) => response.json());
-
+        $.ajax({
+            type: "PUT",
+            url: [url, event.id].join("/"),
+            data: event,
+        });
 
     return { getEvents, addEvent, deleteEvent, editEvent };
 })();
@@ -145,14 +143,11 @@ const Controller = ((model, view) => {
     const state = new model.State();
 
     const addEvent = () => {
-        const input_event_name = document.querySelector(view.eleId.input_event_name);
-        const input_event_submit = document.querySelector(view.eleId.input_event_submit);
         const input_event_start_date = document.querySelector(view.eleId.input_event_start_date);
         const input_event_end_date = document.querySelector(view.eleId.input_event_end_date);
-
-        input_event_submit.addEventListener("click", (event) => {
+        $(view.eleId.input_event_submit).bind("click", (event) => {
             const eventNew = new model.Event(
-                input_event_name.value,
+                $(view.eleId.input_event_name).val(),
                 input_event_start_date.valueAsNumber.toString(),
                 input_event_end_date.valueAsNumber.toString()
             );
@@ -166,40 +161,35 @@ const Controller = ((model, view) => {
     };
 
     const deleteEvent = () => {
-        const ele = document.querySelector(view.eleId.events);
-        ele.addEventListener("click", (event) => {
+        $(view.eleId.events).bind("click", (event) => {
             if (event.target.id !== '' && event.target.name === "delete") {
                 state.events = state.events.filter((obj) => {
                     return +obj.id !== +event.target.id;
                 });
                 console.log(event.target.id);
                 model.deleteEvent(event.target.id);
+                window.location.reload();
             }
         });
     };
 
     const editEvent = () => {
-        const ele = document.querySelector(view.eleId.events);
-        ele.addEventListener("click", (event) => {
+        $(view.eleId.events).bind("click", (event) => {
             if (event.target.name === "edit") {
                 console.log(event.target.value);
                 let selected_event = state.events.find((obj) => {
                     return obj.eventName === event.target.value;
                 });
                 console.log(selected_event);
-                const input_to_edit = document.querySelectorAll(`.${selected_event.eventName}`);
-                console.log(input_to_edit);
-                input_to_edit.forEach((input) => {
+                $(`.${selected_event.eventName}`).get().forEach((input) => {
                     input.disabled = false;
                 });
-                const input_to_save = document.querySelector(`.${selected_event.eventName}`);
-                input_to_save.addEventListener("keyup", (event) => {
+                $(`.${selected_event.eventName}`).bind("keyup", (event) => {
                     if (event.key === "Enter") {
-                        const input_event_name = document.querySelector(`#event__name.${selected_event.eventName}`);
                         const input_event_start_date = document.querySelector(`#event__start__date.${selected_event.eventName}`);
                         const input_event_end_date = document.querySelector(`#event__end__date.${selected_event.eventName}`);
                         const eventUpdated = new model.Event(
-                            input_event_name.value,
+                            $(`#event__name.${selected_event.eventName}`).val(),
                             input_event_start_date.valueAsNumber.toString(),
                             input_event_end_date.valueAsNumber.toString(),
                             id = selected_event.id
@@ -211,7 +201,7 @@ const Controller = ((model, view) => {
                         });
                     };
                 });
-                
+
             }
         });
     };
@@ -233,4 +223,4 @@ const Controller = ((model, view) => {
 
 })(Model, View);
 
-Controller.startUp();
+Controller.startUp(); 
