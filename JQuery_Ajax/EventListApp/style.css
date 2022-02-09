@@ -1,0 +1,114 @@
+@import url(common.css);
+
+body{
+    background-color: var(--color-grey);
+   
+}
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table__container{
+    width:90%;    
+}
+
+table{
+    width:100%;
+    position: relative;
+    height:40rem;
+}
+
+tr{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3.5rem;
+    font-size: 1.6rem;
+    height: 5rem;
+    border-bottom: 1px solid lightgrey;
+}
+
+
+.table__toprow{
+    width: 90%;
+    background-color: white;
+    position: fixed;
+    height: var(--tr-height);
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 2rem;
+    z-index: 1;
+}
+
+thead{
+    background-color: var(--color-thead);
+    width: 90%;
+    display: flex;
+    margin-top: var(--tr-height);
+    position: fixed;
+    height: var(--tr-height);
+    z-index: 1;
+    
+}
+thead tr th{
+    font-weight: 400;
+}
+#table_eventlist{
+    background-color: white;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+   
+}
+
+
+button{
+    border: none;
+    color: var(--color-button-text);
+    background-color: rgba(0,0,0,0);
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.add_new{
+    width:9rem;
+    height:3.5rem;
+    background-color: var(--color-button-add);
+    color:#347CC0
+}
+input[type="submit"]{
+    border: none;
+    color: var(--color-button-text);
+    background-color: rgba(0,0,0,0);
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1.5rem;
+}
+
+.pagination{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 4rem;
+    margin-top: 1rem;
+}
+.pagination input{
+    color: var(--color-button-text);
+    border: none;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.Page_text{
+    text-align: center;
+    font-size: 1.2rem;
+}
+

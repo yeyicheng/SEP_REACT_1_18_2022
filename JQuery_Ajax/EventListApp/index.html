@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventList</title>
+  <link rel="stylesheet" href="style.css">
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <main>
+    <section class="table__container">
+      <header class="table__toprow">
+        <button class="add_new">ADD NEW</button>
+      </header>
+      <table>
+        <thead class="table__head">
+          <th>Event name</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Actions</th>
+        </thead>
+        <tbody id="table_eventlist">
+
+        </tbody>
+
+      </table>
+      <div class="pagination" id="pagination">
+        <input type="button" id="PREV" value="PREV">
+        <input type="button" id="NEXT" value="NEXT">
+      </div>
+      <div class="Page_text">Page
+        <span id="pageNumber"></span>
+      </div>
+    </section>
+  </main>
+  <script src="script_Jquery.js"></script>
+</body>
+
+</html>
