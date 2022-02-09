@@ -94,9 +94,9 @@ const EventList = () => {
 
   const fetchValues = (row_id) => {
     if (row_id) {
-      const nameEle = document.querySelector(`#name_${row_id}`);
-      const startDateEle = document.querySelector(`#start_date_${row_id}`);
-      const endDateEle = document.querySelector(`#end_date_${row_id}`);
+      const nameEle = $(`#name_${row_id}`);
+      const startDateEle = $(`#start_date_${row_id}`);
+      const endDateEle = $(`#end_date_${row_id}`);
 
       return {
         eventName: nameEle.value,
@@ -104,7 +104,7 @@ const EventList = () => {
         endDate: `${dateStrToTimestamp(endDateEle.value)}`,
       };
     } else {
-      const inputs = document.querySelectorAll(
+      const inputs = $(
         `#eventlist_container > .eventlist__row:last-child input[type="text"],input[type="date"]`
       );
 
