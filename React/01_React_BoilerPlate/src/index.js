@@ -1,7 +1,11 @@
 import Logo from './Logo';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import "./style.scss";
+import PropTypes from 'prop-types';
 
 class HelloMessage extends React.Component {
-  state = { name: 'Yicheng' };
+  state = { name: 'Yicheng Ye' };
   render() {
     return (
       <div>
@@ -10,6 +14,10 @@ class HelloMessage extends React.Component {
     );
   }
 }
+
+HelloMessage.propTypes = {
+  name: PropTypes.string.isRequired
+};
 
 ReactDOM.render(
   <HelloMessage name="Patrick" />,
