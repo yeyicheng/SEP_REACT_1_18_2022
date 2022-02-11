@@ -27,7 +27,7 @@ class App extends React.Component {
     });
   }
 
-  async changeInput(e, id, keyName, valueType) {
+  changeInput(e, id, keyName, valueType) {
     const curr = this.state.eventList.filter(ev => ev.id === id)[0];
     if (valueType === 'Date') {
       curr[keyName] = new Date(e.target.value).getTime().toString()
@@ -41,45 +41,29 @@ class App extends React.Component {
 
   generateEventList() {
     return this.state.eventList.map(ev => {
-      if (!ev.isNew) {
-        return <tr className="row" id={ev.id}>
-          <td>
-            <input disabled={ev.disabled} defaultValue={ev.eventName} type='text'
-                   onChange={e => this.changeInput(e, ev.id, 'eventName')}/>
-          </td>
-          <td>
-            <input disabled={ev.disabled}
-                   type='date'
-                   defaultValue={ev.startDate ? new Date(+ev.startDate).toISOString().slice(0, 10) : ''}
-                   onChange={e => this.changeInput(e, ev.id, 'startDate', 'Date')}/>
-          </td>
-          <td>
-            <input disabled={ev.disabled}
-                   type='date'
-                   defaultValue={ev.endDate ? new Date(+ev.endDate).toISOString().slice(0, 10) : ''}
-                   onChange={e => this.changeInput(e, ev.id, 'endDate', 'Date')}/>
-          </td>
-          <td>
-            <button onClick={e => ev.disabled? this.editEventRow(e, ev.id): this.updateEventRow(e, ev.id, ev)}
-                    className="edit-btn">{ev.disabled? 'EDIT': 'SAVE'}</button>
-            <button onClick={e => this.deleteEventRow(e, ev.id)} className="delete-btn" value="DELETE">DELETE</button>
-          </td>
-        </tr>
-      } else {
-        return <tr id="add-row" key={ev.id}><td>
-          <input type="text" id="input__eventName" onChange={e => this.changeInput(e, ev.id, 'eventName')} />
-          </td>
-          <td>
-              <input type="date" id="input__startDate" onChange={e => this.changeInput(e, ev.id, 'startDate', 'Date')}/>
-          </td>
-          <td>
-              <input type="date" id="input__endDate" onChange={e => this.changeInput(e, ev.id, 'endDate', 'Date')}/>
-          </td>
-          <td>
-              <button onClick={e => this.saveEventRow(e, ev.id, ev)} id="input__saveBtn">SAVE</button>
-              <button onClick={e => this.removeNewRow(e, ev.id)} id="input__closeBtn">CLOSE</button>
-          </td></tr>
-      }
+      return <tr className="row" id={ev.id}>
+        <td>
+          <input disabled={ev.disabled} defaultValue={ev.eventName} type='text'
+                 onChange={e => this.changeInput(e, ev.id, 'eventName')}/>
+        </td>
+        <td>
+          <input disabled={ev.disabled}
+                 type='date'
+                 defaultValue={ev.startDate ? new Date(+ev.startDate).toISOString().slice(0, 10) : ''}
+                 onChange={e => this.changeInput(e, ev.id, 'startDate', 'Date')}/>
+        </td>
+        <td>
+          <input disabled={ev.disabled}
+                 type='date'
+                 defaultValue={ev.endDate ? new Date(+ev.endDate).toISOString().slice(0, 10) : ''}
+                 onChange={e => this.changeInput(e, ev.id, 'endDate', 'Date')}/>
+        </td>
+        <td>
+          <button onClick={e => ev.isNew? this.saveEventRow(e, ev.id, ev): ev.disabled? this.editEventRow(e, ev.id): this.updateEventRow(e, ev.id, ev)}
+                  className="edit-btn">{ev.disabled? 'EDIT': 'SAVE'}</button>
+          <button onClick={e => ev.isNew? this.removeNewRow(e, ev.id): this.deleteEventRow(e, ev.id)} className="delete-btn" value="DELETE">{ ev.isNew? 'CLOSE': 'DELETE'}</button>
+        </td>
+      </tr>
     })
   }
 
