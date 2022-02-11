@@ -1,7 +1,9 @@
 import './App.css';
 import React from "react";
 import {Api} from "./API/api";
-import EventListRow from "./Component/EventListRow";
+import EventListHeader from "./Component/EventListHeader";
+import EventListBody from "./Component/EventListBody";
+import EventListAddRow from "./Component/EventListAddRow";
 
 class App extends React.Component {
     constructor(props) {
@@ -10,7 +12,6 @@ class App extends React.Component {
             ...props,
             eventList: []
         }
-        this.generateEventList = this.generateEventList.bind(this);
         this.changeInput = this.changeInput.bind(this);
         this.editEventRow = this.editEventRow.bind(this);
         this.deleteEventRow = this.deleteEventRow.bind(this);
@@ -39,18 +40,6 @@ class App extends React.Component {
         }
         this.setState({
             eventList: this.state.eventList
-        })
-    }
-
-    generateEventList = () => {
-        return this.state.eventList.map(ev => {
-            return <EventListRow ev={ev} key={ev.id}
-                                 changeInput={this.changeInput}
-                                 editEventRow={this.editEventRow}
-                                 deleteEventRow={this.deleteEventRow}
-                                 saveEventRow={this.saveEventRow}
-                                 updateEventRow={this.updateEventRow}
-                                 removeNewRow={this.removeNewRow}/>
         })
     }
 
@@ -120,19 +109,16 @@ class App extends React.Component {
         return (
             <div className="App">
                 <section className="table-container">
-                    <div className="add-content">
-                        <button onClick={this.addEventRow} className="add-btn">ADD NEW</button>
-                    </div>
+                    <EventListAddRow addEventRow={this.addEventRow}/>
                     <table>
-                        <tr className="header">
-                            <th>Event name</th>
-                            <th>Start date</th>
-                            <th>End date</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tbody id="table-body">
-                        {this.generateEventList()}
-                        </tbody>
+                        <EventListHeader/>
+                        <EventListBody eventList={this.state.eventList}
+                                       changeInput={this.changeInput}
+                                       editEventRow={this.editEventRow}
+                                       deleteEventRow={this.deleteEventRow}
+                                       saveEventRow={this.saveEventRow}
+                                       updateEventRow={this.updateEventRow}
+                                       removeNewRow={this.removeNewRow}/>
                     </table>
                 </section>
             </div>
