@@ -1,6 +1,6 @@
 import React from "react";
 
-class Row extends React.Component {
+class EventListRow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,4 +36,4 @@ class Row extends React.Component {
     }
 }
 
-export default Row;
+export default EventListRow;

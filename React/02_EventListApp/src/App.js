@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
-import {Api} from "./api";
-import Row from "./Row";
+import {Api} from "./API/api";
+import EventListRow from "./Component/EventListRow";
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class App extends React.Component {
 
   generateEventList() {
     return this.state.eventList.map(ev => {
-      return <Row ev={ev} key={ev.id}
+      return <EventListRow ev={ev} key={ev.id}
                   changeInput={this.changeInput}
                   editEventRow={this.editEventRow}
                   deleteEventRow={this.deleteEventRow}
