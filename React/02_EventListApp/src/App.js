@@ -49,7 +49,8 @@ class App extends React.Component {
                                  editEventRow={this.editEventRow}
                                  deleteEventRow={this.deleteEventRow}
                                  saveEventRow={this.saveEventRow}
-                                 updateEventRow={this.updateEventRow}/>
+                                 updateEventRow={this.updateEventRow}
+                                 removeNewRow={this.removeNewRow}/>
         })
     }
 
