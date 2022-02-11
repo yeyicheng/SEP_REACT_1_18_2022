@@ -3,7 +3,6 @@ import axios from "axios";
 export const Api = (() => {
     const baseUrl = "http://localhost:3000/events";
 
-    // const getEvents = () => fetch(baseUrl).then((response) => response.json());
     const getEvents = async () =>
         (await axios.get(baseUrl)).data;
 
