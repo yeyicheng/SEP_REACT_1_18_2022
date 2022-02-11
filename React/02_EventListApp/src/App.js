@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react";
 import {Api} from "./api";
+import Row from "./Row";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class App extends React.Component {
     this.deleteEventRow = this.deleteEventRow.bind(this);
     this.addEventRow = this.addEventRow.bind(this);
     this.updateUI = this.updateUI.bind(this);
+    this.saveEventRow = this.saveEventRow.bind(this);
+    this.updateEventRow = this.updateEventRow.bind(this);
   }
 
   async componentDidMount() {
@@ -41,29 +44,12 @@ class App extends React.Component {
 
   generateEventList() {
     return this.state.eventList.map(ev => {
-      return <tr className="row" id={ev.id}>
-        <td>
-          <input disabled={ev.disabled} defaultValue={ev.eventName} type='text'
-                 onChange={e => this.changeInput(e, ev.id, 'eventName')}/>
-        </td>
-        <td>
-          <input disabled={ev.disabled}
-                 type='date'
-                 defaultValue={ev.startDate ? new Date(+ev.startDate).toISOString().slice(0, 10) : ''}
-                 onChange={e => this.changeInput(e, ev.id, 'startDate', 'Date')}/>
-        </td>
-        <td>
-          <input disabled={ev.disabled}
-                 type='date'
-                 defaultValue={ev.endDate ? new Date(+ev.endDate).toISOString().slice(0, 10) : ''}
-                 onChange={e => this.changeInput(e, ev.id, 'endDate', 'Date')}/>
-        </td>
-        <td>
-          <button onClick={e => ev.isNew? this.saveEventRow(e, ev.id, ev): ev.disabled? this.editEventRow(e, ev.id): this.updateEventRow(e, ev.id, ev)}
-                  className="edit-btn">{ev.disabled? 'EDIT': 'SAVE'}</button>
-          <button onClick={e => ev.isNew? this.removeNewRow(e, ev.id): this.deleteEventRow(e, ev.id)} className="delete-btn" value="DELETE">{ ev.isNew? 'CLOSE': 'DELETE'}</button>
-        </td>
-      </tr>
+      return <Row ev={ev} key={ev.id}
+                  changeInput={this.changeInput}
+                  editEventRow={this.editEventRow}
+                  deleteEventRow={this.deleteEventRow}
+                  saveEventRow={this.saveEventRow}
+                  updateEventRow={this.updateEventRow}/>
     })
   }
 
