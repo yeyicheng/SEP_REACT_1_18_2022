@@ -36,7 +36,7 @@ tr {
 
 .add-btn {
   background-color: #f5f6f7;
-  color: #0496f7b2;
+  color: #357BC0;
   border: none;
   width: 15rem;
   font-size: 2rem;
@@ -45,7 +45,7 @@ tr {
 
 .header {
   height: 8rem;
-  background-color: #0496f744;
+  background-color: #E2EBF7;
   color: #666563;
 }
 
@@ -60,9 +60,6 @@ td>button {
 #input__closeBtn {
   margin-left: 15px;
 }
-
-
-
 
 td {
   width: 15rem;
