@@ -6,19 +6,22 @@ export default function EventListRow(props) {
     return (<tr className="row" id={ev.id}>
         <td>
             <input disabled={ev.disabled} defaultValue={ev.eventName} type='text'
-                   onChange={e => props.changeInput(e, ev.id, 'eventName')}/>
+                   name={'eventName'}
+                   onChange={e => props.changeInput(e, ev.id)}/>
         </td>
         <td>
             <input disabled={ev.disabled}
                    type='date'
+                   name={'startDate'}
                    defaultValue={ev.startDate ? new Date(+ev.startDate).toISOString().slice(0, 10) : ''}
-                   onChange={e => props.changeInput(e, ev.id, 'startDate', 'Date')}/>
+                   onChange={e => props.changeInput(e, ev.id, 'Date')}/>
         </td>
         <td>
             <input disabled={ev.disabled}
                    type='date'
+                   name={'endDate'}
                    defaultValue={ev.endDate ? new Date(+ev.endDate).toISOString().slice(0, 10) : ''}
-                   onChange={e => props.changeInput(e, ev.id, 'endDate', 'Date')}/>
+                   onChange={e => props.changeInput(e, ev.id, 'Date')}/>
         </td>
         <td>
             <button

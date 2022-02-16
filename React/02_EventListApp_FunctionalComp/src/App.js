@@ -21,12 +21,12 @@ function App(props) {
         }
     });
 
-    let changeInput = (e, id, keyName, valueType) => {
+    let changeInput = ({target: {name, value}}, id, valueType) => {
         const curr = evList.filter(ev => ev.id === id)[0];
         if (valueType === 'Date') {
-            curr[keyName] = new Date(e.target.value).getTime().toString()
+            curr[name] = new Date(value).getTime().toString()
         } else {
-            curr[keyName] = e.target.value;
+            curr[name] = value;
         }
         setEvList(evList);
     }
