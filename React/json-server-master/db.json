@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "disabled": true,
+      "startDate": "1643673600000",
+      "endDate": "1646352000000",
+      "eventName": "DDD",
+      "id": 4
+    },
+    {
+      "eventName": "TEST-1111",
+      "startDate": "1641790800000",
+      "endDate": "7953120000000",
+      "disabled": true,
+      "id": 5
+    },
+    {
+      "disabled": true,
+      "startDate": "1643500800000",
+      "endDate": "1646870400000",
+      "eventName": "1111",
+      "id": 6
+    },
+    {
+      "disabled": true,
+      "startDate": "1643500800000",
+      "endDate": "1646092800000",
+      "eventName": "222",
+      "id": 7
+    }
+  ]
+}
