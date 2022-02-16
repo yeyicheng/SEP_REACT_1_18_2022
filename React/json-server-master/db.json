@@ -3,12 +3,12 @@
     {
       "disabled": true,
       "startDate": "1643673600000",
-      "endDate": "1646352000000",
+      "endDate": "-27102124800000",
       "eventName": "DDD",
       "id": 4
     },
     {
-      "eventName": "TEST-1111",
+      "eventName": "TEST-11112",
       "startDate": "1641790800000",
       "endDate": "7953120000000",
       "disabled": true,
@@ -27,6 +27,20 @@
       "endDate": "1646092800000",
       "eventName": "222",
       "id": 7
+    },
+    {
+      "disabled": true,
+      "startDate": "1644192000000",
+      "endDate": "1646265600000",
+      "eventName": "111323",
+      "id": 8
+    },
+    {
+      "disabled": true,
+      "startDate": "1645315200000",
+      "endDate": "1646870400000",
+      "eventName": "1231",
+      "id": 9
     }
   ]
 }

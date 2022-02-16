@@ -11,19 +11,22 @@ export default class EventListRow extends React.Component {
         return <tr className="row" id={this.state.ev.id}>
             <td>
                 <input disabled={this.state.ev.disabled} defaultValue={this.state.ev.eventName} type='text'
-                       onChange={e => this.props.changeInput(e, this.state.ev.id, 'eventName')}/>
+                       name={'eventName'}
+                       onChange={e => this.props.changeInput(e, this.state.ev.id)}/>
             </td>
             <td>
                 <input disabled={this.state.ev.disabled}
                        type='date'
+                       name={'startDate'}
                        defaultValue={this.state.ev.startDate ? new Date(+this.state.ev.startDate).toISOString().slice(0, 10) : ''}
-                       onChange={e => this.props.changeInput(e, this.state.ev.id, 'startDate', 'Date')}/>
+                       onChange={e => this.props.changeInput(e, this.state.ev.id, 'Date')}/>
             </td>
             <td>
                 <input disabled={this.state.ev.disabled}
                        type='date'
+                       name={'endDate'}
                        defaultValue={this.state.ev.endDate ? new Date(+this.state.ev.endDate).toISOString().slice(0, 10) : ''}
-                       onChange={e => this.props.changeInput(e, this.state.ev.id, 'endDate', 'Date')}/>
+                       onChange={e => this.props.changeInput(e, this.state.ev.id, 'Date')}/>
             </td>
             <td>
                 <button onClick={e => this.state.ev.isNew? this.props.saveEventRow(e, this.state.ev.id, this.state.ev): this.state.ev.disabled? this.props.editEventRow(e, this.state.ev.id): this.props.updateEventRow(e, this.state.ev.id, this.state.ev)}

@@ -12,13 +12,6 @@ class App extends React.Component {
             ...props,
             eventList: []
         }
-        this.changeInput = this.changeInput.bind(this);
-        this.editEventRow = this.editEventRow.bind(this);
-        this.deleteEventRow = this.deleteEventRow.bind(this);
-        this.addEventRow = this.addEventRow.bind(this);
-        this.updateUI = this.updateUI.bind(this);
-        this.saveEventRow = this.saveEventRow.bind(this);
-        this.updateEventRow = this.updateEventRow.bind(this);
     }
 
     async componentDidMount() {
@@ -31,12 +24,12 @@ class App extends React.Component {
         });
     }
 
-    changeInput = (e, id, keyName, valueType) => {
+    changeInput = ({target: {name, value}}, id, valueType) => {
         const curr = this.state.eventList.filter(ev => ev.id === id)[0];
         if (valueType === 'Date') {
-            curr[keyName] = new Date(e.target.value).getTime().toString()
+            curr[name] = new Date(value).getTime().toString()
         } else {
-            curr[keyName] = e.target.value;
+            curr[name] = value;
         }
         this.setState({
             eventList: this.state.eventList
@@ -77,16 +70,15 @@ class App extends React.Component {
     }
 
     addEventRow = () => {
-        this.state.eventList.push({
-            id: new Date().getTime().toString(),
-            isNew: true,
-            disabled: false,
-            startDate: '',
-            endDate: '',
-            eventName: ''
-        })
         this.setState({
-            eventList: this.state.eventList
+            eventList: [...this.state.eventList, {
+                id: new Date().getTime().toString(),
+                isNew: true,
+                disabled: false,
+                startDate: '',
+                endDate: '',
+                eventName: ''
+            }]
         })
     }
 
