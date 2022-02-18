@@ -28,7 +28,7 @@ export default class EventListRow extends React.Component {
                        defaultValue={this.state.ev.endDate ? new Date(+this.state.ev.endDate).toISOString().slice(0, 10) : ''}
                        onChange={e => this.props.changeInput(e, this.state.ev.id, 'Date')}/>
             </td>
-            <td>
+            <td style={{display: this.props.type === 'upcoming'? 'none': 'block'}}>
                 <button onClick={e => this.state.ev.isNew? this.props.saveEventRow(e, this.state.ev.id, this.state.ev): this.state.ev.disabled? this.props.editEventRow(e, this.state.ev.id): this.props.updateEventRow(e, this.state.ev.id, this.state.ev)}
                         className="edit-btn">{this.state.ev.disabled? 'EDIT': 'SAVE'}</button>
                 <button onClick={e => this.state.ev.isNew? this.props.removeNewRow(e, this.state.ev.id): this.props.deleteEventRow(e, this.state.ev.id)}

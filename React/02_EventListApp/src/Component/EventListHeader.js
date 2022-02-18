@@ -7,7 +7,7 @@ export default class EventListHeader extends React.Component {
             <th>Event name</th>
             <th>Start date</th>
             <th>End date</th>
-            <th>Actions</th>
+            <th style={{display: this.props.type === 'upcoming'? 'none': ''}}>Actions</th>
         </tr>
         </thead>
     }

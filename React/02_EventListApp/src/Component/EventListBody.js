@@ -6,7 +6,7 @@ export default class EventListBody extends React.Component {
         return <tbody id="table-body">
         {
             this.props.eventList.map(ev => {
-            return <EventListRow ev={ev} key={ev.id}
+            return <EventListRow ev={ev} key={ev.id} type={this.props.type}
                                  changeInput={this.props.changeInput}
                                  editEventRow={this.props.editEventRow}
                                  deleteEventRow={this.props.deleteEventRow}

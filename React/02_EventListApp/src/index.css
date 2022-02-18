@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.upcomingEventsApp__nav {
+  padding: .5vw 0;
+  margin-right: 1vw;
+  font-size: 1vw;
+}
+
+.upcomingEventsApp__selected {
+  border-bottom: solid 2px black;
+}

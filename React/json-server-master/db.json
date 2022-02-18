@@ -41,6 +41,13 @@
       "endDate": "1646784000000",
       "eventName": "1231212323",
       "id": 10
+    },
+    {
+      "disabled": true,
+      "startDate": "1646092800000",
+      "endDate": "1646179200000",
+      "eventName": "123",
+      "id": 11
     }
   ]
 }
