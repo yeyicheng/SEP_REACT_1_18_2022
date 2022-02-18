@@ -1,0 +1,123 @@
+.articlePost {
+    background-color: #F0F3F5;
+    margin-bottom: 32vw;
+}
+
+.articlePost .mainWrapper {
+    width: 65%;
+    height: calc(100vh - 3vw - 8.5vw);
+}
+
+.articlePost .btns {
+    margin-top: 3vw;
+    margin-bottom: 1vw;
+}
+
+.articlePost .btns .btn {
+    width: 6vw;
+    height: 2vw;
+    font-weight: bold;
+    font-size: 1.35vw;
+    margin-left: 1.5vw;
+    padding: .5vw 1vw;
+    cursor: pointer;
+}
+
+.articlePost .btns .btnDraft {
+    border: solid 2px #888;
+    color: #888;
+}
+
+.articlePost .btns .btnPublish {
+    border: solid 2px #00BBF4;
+    color: #00BBF4;
+}
+
+.articlePost .bodyArea {
+    background-color: #fff;
+    padding: 2vw;
+}
+
+.articlePost .bodyArea .title {
+    width: 75%;
+}
+
+.articlePost .bodyArea .title input {
+    background-color: #EFF3F5;
+    padding: 1vw;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin-bottom: 1vw;
+    margin-left: 0.5vw;
+}
+
+.articlePost .bodyArea .title input::placeholder {
+    font-size: 1.35vw;
+}
+
+.articlePost .bodyArea .body {
+    margin-bottom: 1vw;
+}
+
+.articlePost .bodyArea .tags {
+    background-color: #fff;
+    width: 100%;
+}
+
+.articlePost .bodyArea .tags input {
+    background-color: #EFF3F5;
+    padding: 1vw;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin-bottom: 1vw;
+    margin-left: 0.295vw;
+}
+
+.articlePost .bodyArea .tags input::placeholder {
+    font-size: 1.35vw;
+}
+
+.articlePost .coverCount {
+    margin-top: 3vw;
+    cursor: pointer;
+}
+
+.articlePost .coverCount .btnCover {
+    padding: 1vw 2.5vw;
+    border: solid 1px #444;
+    color: #444;
+    margin-left: 1.5vw;
+    border-radius: .5vw;
+    font-size: 1.35vw;
+}
+
+.articlePost .coverArea  {
+    margin-top: 3vw;
+    margin-left: 7.15vw;
+}
+
+.articlePost .coverArea .coverAdd {
+    display: none;
+}
+.articlePost .coverArea .coverAddImg {
+    width: 10vw;
+    height: 10vw;
+    margin-right: 1.5vw;
+}
+.articlePost .coverArea .coverWrapper {
+    width: 10vw;
+    height: 10vw;
+    margin-right: 1.5vw;
+}
+.articlePost .coverArea .cover {
+    width: 100%;
+    height: 100%;
+}
+.articlePost .coverArea .close {
+    width: 3vw;
+    height: 3vw;
+    right: -1.5vw;
+    top: -1.5vw;
+}

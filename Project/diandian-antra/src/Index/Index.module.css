@@ -1,0 +1,134 @@
+.banner {
+    width: 100%;
+    height: auto;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+}
+
+.mainWrapper {
+    width: 100%;
+    min-height: calc(100vh - 3vw - 8.5vw);
+}
+
+.main {
+    width: 60vw;
+    min-height: calc(100vh - 3vw - 8.5vw);
+    background-color: #fff;
+    margin: 0 auto;
+    font-size: 1vw;
+    padding: 2vw 2vw;
+}
+
+.main .nav {
+    padding-left: 4vw;
+}
+
+.main .nav .navItem {
+    margin-right: 2vw;
+}
+
+.main .nav .navItem .selected {
+    margin-top: .35vw;
+    width: 1.5vw;
+    height: .25vw;
+    background-color: #494D56;
+}
+
+.main .article .articleItem {
+    width: 16vw;
+    margin: 1vw 1vw;
+    border-radius: .3vw;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+}
+
+.main .article .articleItem .cover {
+    width: 16vw;
+    height: 16vw;
+    background-color: gray;
+    border-top-left-radius: .3vw;
+    border-top-right-radius: .3vw;
+}
+
+.main .article .articleItem .desc {
+    width: 16vw;
+    height: auto;
+    padding: 1vw 0;
+}
+
+.main .article .articleItem .desc div {
+    line-height: 1.2;
+}
+
+.main .article .articleItem .desc .title {
+    font-size: 1vw;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    padding: 0 .5vw;
+    font-weight: bold;
+}
+
+.main .article .articleItem .desc .content {
+    font-size: .8vw;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 .5vw;
+    color: #888;
+    height: calc(2 * .85vw);
+}
+
+.main .article .articleItem .desc .like {
+    font-size: .8vw;
+    width: 100%;
+    padding: 0 .5vw;
+    color: #888;
+}
+
+.main .article .articleItem .desc .like img {
+    width: 1.2vw;
+    height: auto;
+    margin-right: .3vw;
+}
+
+.main .article .articleItem .author {
+    border-top: solid 1px #eee;
+    font-size: .8vw;
+    border-bottom-left-radius: .3vw;
+    border-bottom-right-radius: .3vw;
+    padding: .8vw 0;
+    width: calc(100% - 1.2vw);
+}
+
+.main .article .articleItem .author .lt {
+    width: 10vw;
+}
+
+.main .article .articleItem .author .lt .avatar {
+    width: 2vw;
+    height: 2vw;
+    background-color: gray;
+    border-radius: 50%;
+    margin-right: .3vw;
+}
+
+.main .article .articleItem .author .lt .username {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 7.5vw;
+}
+
+.main .article .articleItem .author .rt .date {
+    color: #888;
+}

@@ -1,0 +1,3226 @@
+{
+  "info": {
+    "_postman_id": "066568e9-6230-4f08-886f-acd3b1aae4e4",
+    "name": "读书点点 Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "注册",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"user\": {\n        \"username\": \"yyc4\",\n        \"email\": \"yyc4@qq.com\",\n        \"phone\": \"18117412584\",\n        \"password\": \"123456\",\n        \"roles\": [\"admin\"]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/users/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "users",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "登录",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Body matches string\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "var token = jsonData.data.token;",
+              "pm.environment.set('accessToken', token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"user\": {\n        \"phone\": \"18117412584\",\n        \"password\": \"123456\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/users/login-pwd",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "users",
+            "login-pwd"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "修改资料",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"user\": {\n        \"username\": \"YichengYe2\",\n        \"email\": \"ye.yicheng124@gmail.com\",\n        \"phone\": \"18117412584\",\n        \"password\": \"910310\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/user",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "添加书籍库书籍",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"Response is valid\", function () {",
+              "    pm.expect(jsonData.desc).to.eql(\"成功\");",
+              "    pm.expect(jsonData.data.title).to.eql(\"我们来赚钱\");",
+              "});",
+              "",
+              "pm.environment.set(\"bookOriginalId\", jsonData.data.bookID);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"bookOriginal\": {\n        \"isbn\": \"10\",\n        \"title\": \"我们来赚钱\",\n        \"authors\": \"叶漪澄\",\n        \"network\": false,\n        \"cover\": \"111\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/bookoriginal/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookoriginal",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "添加书架",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"Response is valid\", function () {",
+              "    pm.expect(jsonData.desc).to.eql(\"成功\");",
+              "    pm.expect(jsonData.data.name).to.eql(\"计算机\");",
+              "});",
+              "",
+              "pm.environment.set(\"bookshelfId\", jsonData.data.id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"bookshelf\": {\n        \"name\": \"计算机\"\n    }\n}\n\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/bookshelves",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookshelves"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "用户书架",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Body matches string\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"计算机\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/user/bookshelves?pageSize=10&page=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user",
+            "bookshelves"
+          ],
+          "query": [
+            {
+              "key": "pageSize",
+              "value": "10"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "书架详情",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response is valid\", function () {",
+              "    let jsonData = pm.response.json();",
+              "    pm.expect(jsonData.desc).to.eql(\"成功\");",
+              "    pm.expect(jsonData.data.name).to.eql(\"计算机\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/bookshelves/{{bookshelfId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookshelves",
+            "{{bookshelfId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "修改书架",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"bookshelf\": {\n        \"name\": \"数学\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/bookshelves/{{bookshelfId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookshelves",
+            "{{bookshelfId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "添加书籍",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"Response is valid\", function () {",
+              "    pm.expect(jsonData.desc).to.eql(\"成功\");",
+              "    pm.expect(jsonData.data.title).to.eql(\"我们来赚钱1\");",
+              "});",
+              "",
+              "pm.environment.set(\"bookId\", jsonData.data.bookID);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"book\": {\n        \"isbn\": \"1\",\n        \"title\": \"我们来赚钱1\",\n        \"authors\": \"叶漪澄\",\n        \"tags\": \"计算机,数学,物理,生物\",\n        \"bookOriginal\": \"{{bookOriginalId}}\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "用户书籍",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Body matches string\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"我们来赚钱1\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/user/books?page=1&pageSize=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user",
+            "books"
+          ],
+          "query": [
+            {
+              "key": "updatedAt",
+              "value": "2021-02-16T23:09:31.727Z",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "pageSize",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "书籍详情",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"Response is valid\", function () {",
+              "    pm.expect(jsonData.desc).to.eql(\"成功\");",
+              "    pm.expect(jsonData.data.book.title).to.eql(\"我们来赚钱1\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "书架添加书籍",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"Response is valid\", function () {",
+              "    pm.expect(jsonData.desc).to.eql(\"成功\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/bookshelves/{{bookshelfId}}/{{bookId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookshelves",
+            "{{bookshelfId}}",
+            "{{bookId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "修改书籍",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"book\": {\n        \"status\": 4,\n        \"nth_read\": 1,\n        \"total_pages\":100\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/5fe293d9e4a38328ccd93442",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5fe293d9e4a38328ccd93442"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "删除书籍",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/5fe297176894bc296a8ec2d8",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5fe297176894bc296a8ec2d8"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "书架删除书籍",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/bookshelves/{{bookshelfId}}/{{bookId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookshelves",
+            "{{bookshelfId}}",
+            "{{bookId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "批量删除书架",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"bookshelves\" : \"5f8f8e5acd027218d862da6e,5f8cb9c67776c5a2240497ae\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/bookshelves/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookshelves",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "书架排序",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"bookshelves\": \"5f8cb9c67776c5a2240497ae,5f8f8e5acd027218d862da6e\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/bookshelves/order",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookshelves",
+            "order"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取所有书籍标签",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "pm.test(\"response is valid\", function () {",
+              "    let jsonData = pm.response.json();",
+              "    let data = jsonData.data;",
+              "    pm.expect(data.length).to.eql(4);",
+              "    pm.expect(data[0].name).to.include(\"计算机\");",
+              "    pm.expect(data[1].name).to.include(\"数学\");",
+              "    pm.expect(data[2].name).to.include(\"物理\");",
+              "    pm.expect(data[3].name).to.include(\"生物\");",
+              "});",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/user/bookTags",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user",
+            "bookTags"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "判断isbn是否存在",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Book exists\", function () {",
+              "    let jsonData = pm.response.json();",
+              "    pm.expect(jsonData.code).to.eql(0);",
+              "    pm.expect(pm.response.text()).to.include(\"书籍已存在\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/user/books/exist?isbn=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user",
+            "books",
+            "exist"
+          ],
+          "query": [
+            {
+              "key": "title",
+              "value": "儒林外史 : 中国古典文学名著",
+              "disabled": true
+            },
+            {
+              "key": "authors",
+              "value": "吴敬梓",
+              "disabled": true
+            },
+            {
+              "key": "isbn",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "书籍更新标签",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"tags\": \"计算机,数学,生物,物理\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/5f9c533636790c0bab90f3d3/tags",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5f9c533636790c0bab90f3d3",
+            "tags"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "书籍删除标签",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/5f9c533636790c0bab90f3d3/tags/5fd16cc96d8a322e10601340",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5f9c533636790c0bab90f3d3",
+            "tags",
+            "5fd16cc96d8a322e10601340"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "添加目录列表",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "var data = jsonData.data;",
+              "pm.test(\"response is valid\", function () {    ",
+              "    pm.expect(data.length).to.eql(4);",
+              "    pm.expect(data[0].name).to.include(\"第一章\");",
+              "    pm.expect(data[0].level).to.eql(1);",
+              "    pm.expect(data[0].order).to.eql(1);",
+              "    pm.expect(JSON.stringify(data[0])).to.contain(\"updatedAt\");",
+              "    pm.expect(JSON.stringify(data[0])).to.contain(\"createdAt\");",
+              "});",
+              "",
+              "pm.environment.set(\"catalogId\", jsonData.data[0].id);",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"catalogs\": [{\n            \"name\": \"第一章\",\n            \"level\": 1,\n            \"order\": 1\n        }, {\n            \"name\": \"第二章\",\n            \"level\": 1,\n            \"order\": 2\n        }, {\n            \"name\": \"第三章\",\n            \"level\": 1,\n            \"order\": 3\n        }, {\n            \"name\": \"第四章\",\n            \"level\": 1,\n            \"order\": 4\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/catalogs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "catalogs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "添加单个目录",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "var data = jsonData.data;",
+              "pm.test(\"response is valid\", function () {    ",
+              "    pm.expect(data.length).to.eql(5);",
+              "    pm.expect(data[4].name).to.include(\"第五章\");",
+              "    pm.expect(data[4].level).to.eql(2);",
+              "    pm.expect(data[4].order).to.eql(5);",
+              "    pm.expect(JSON.stringify(data[0])).to.contain(\"updatedAt\");",
+              "    pm.expect(JSON.stringify(data[0])).to.contain(\"createdAt\");",
+              "});",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"catalog\": {\n        \"name\": \"第五章\",\n        \"order\": 5,\n        \"level\": 2\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/catalog",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "catalog"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取目录列表",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "var data = jsonData.data;",
+              "pm.test(\"response is valid\", function () {    ",
+              "    pm.expect(data.length).to.eql(5);",
+              "    pm.expect(data[4].name).to.include(\"第五章\");",
+              "    pm.expect(data[4].level).to.eql(2);",
+              "    pm.expect(data[4].order).to.eql(5);",
+              "    pm.expect(JSON.stringify(data[0])).to.contain(\"updatedAt\");",
+              "    pm.expect(JSON.stringify(data[0])).to.contain(\"createdAt\");",
+              "});",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"catalog\": {\n        \"name\": \"第五章\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/catalogs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "catalogs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "更新单个目录",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"catalog\": {\n        \"name\": \"第五章\",\n        \"fatherId\": \"5fe01488c9d1fc1bb2a1bd9a\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/5f9c533636790c0bab90f3d3/catalog/5fe014a4c9d1fc1bb2a1bd9e",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5f9c533636790c0bab90f3d3",
+            "catalog",
+            "5fe014a4c9d1fc1bb2a1bd9e"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "删除单个目录",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/5f9c533636790c0bab90f3d3/catalog/5fe014a4c9d1fc1bb2a1bd9e",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5f9c533636790c0bab90f3d3",
+            "catalog",
+            "5fe014a4c9d1fc1bb2a1bd9e"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "清空目录",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"catalog\": {\n        \"name\": \"第五章\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/5f9c533636790c0bab90f3d3/catalogs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5f9c533636790c0bab90f3d3",
+            "catalogs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "新增书摘",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "   pm.expect(pm.response.text()).to.include(\"percentage\");",
+              "   pm.expect(pm.response.text()).to.include(\"content\");",
+              "   pm.expect(pm.response.text()).to.include(\"idea\");",
+              "   pm.expect(pm.response.text()).to.include(\"audioURL\");",
+              "   pm.expect(pm.response.text()).to.include(\"catalog\");",
+              "});",
+              "",
+              "pm.environment.set(\"noteId\", jsonData.data.id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"note\": {\n        \"percentage\": 100,\n        \"current_page\": 10,\n        \"content\": \"这是本好书\\n这是本好书\\n这是本好书\\n\",\n        \"idea\": \"灵感\\n灵感\\n灵感\\n\",\n        \"audioURL\": \"555\",\n        \"catalog\": \"{{catalogId}}\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/notes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "notes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取书摘列表",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "   pm.expect(jsonData.data.length).to.eql(1);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/notes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "notes"
+          ],
+          "query": [
+            {
+              "key": "date",
+              "value": "2020-12-25",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取书摘详情",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "    pm.expect(pm.response.text()).to.include(\"id\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/notes/{{noteId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "notes",
+            "{{noteId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "删除书摘",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/5f84bcf61d2be2328a560300/notes/5f84c26484ffc843920d1ab2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5f84bcf61d2be2328a560300",
+            "notes",
+            "5f84c26484ffc843920d1ab2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "发表文章",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "   pm.expect(pm.response.text()).to.include(\"文章2\");",
+              "   pm.expect(pm.response.text()).to.include(\"内容2\");",
+              "   pm.expect(jsonData.data.tagList.length).to.eql(2);",
+              "   pm.expect(pm.response.text()).to.include(\"计算机\");",
+              "   pm.expect(pm.response.text()).to.include(\"数学\");",
+              "});",
+              "",
+              "pm.environment.set(\"articleId\", jsonData.data.id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"article\": {\n        \"title\": \"文章2\",\n        \"content\": \"内容2\",\n        \"tags\": \"计算机,数学\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/articles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "articles"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "查询用户文章",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "    pm.expect(jsonData.data[0].title).to.eql(\"文章2\");",
+              "    pm.expect(jsonData.data[0].content).to.eql(\"内容2\");",
+              "    pm.expect(jsonData.data[0].status).to.eql(0);",
+              "    pm.expect(jsonData.data[0].tagList.length).to.eql(2);",
+              "    pm.expect(jsonData.data[0].tagListStr[0]).to.eql(\"计算机\");",
+              "    pm.expect(jsonData.data[0].tagListStr[1]).to.eql(\"数学\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/user/articles?pageSize=10&page=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user",
+            "articles"
+          ],
+          "query": [
+            {
+              "key": "pageSize",
+              "value": "10"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "文章详情",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "    pm.expect(jsonData.data.title).to.eql(\"文章2\");",
+              "    pm.expect(jsonData.data.content).to.eql(\"内容2\");",
+              "    pm.expect(jsonData.data.status).to.eql(0);",
+              "    pm.expect(jsonData.data.tagListStr[0]).to.eql(\"计算机\");",
+              "    pm.expect(jsonData.data.tagListStr[1]).to.eql(\"数学\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/articles/{{articleId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "articles",
+            "{{articleId}}"
+          ],
+          "query": [
+            {
+              "key": "tag",
+              "value": "计算机,数学",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "修改文章",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"article\": {\n        \"tagList\": \"数学,生物\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/articles/5f9b4a659305303bd220fd96",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "articles",
+            "5f9b4a659305303bd220fd96"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "文章更新标签",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{   \n    \"tags\": \"数学,生物\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/articles/5f9b6ebbfec30343a6071155/tags",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "articles",
+            "5f9b6ebbfec30343a6071155",
+            "tags"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "文章删除标签",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/articles/5f9b6ebbfec30343a6071155/tags/5fd18c064f270635ff5011a9",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "articles",
+            "5f9b6ebbfec30343a6071155",
+            "tags",
+            "5fd18c064f270635ff5011a9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "删除文章",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmODNkMjEwYWUyMTM4MTU0NjlkYWQ0OSIsInVzZXJuYW1lIjoieXljIiwiZXhwIjoxNjA3NzE5ODQ3LCJpYXQiOjE2MDI1MzIyNDd9.eZtRChDFYzPQVMbl7b_keTHXNlON0NxP-MmPr0z_CFc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"article\": {\n        \"tagList\": \"数学,生物\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/articles/5f9b4a659305303bd220fd96",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "articles",
+            "5f9b4a659305303bd220fd96"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "批量删除文章",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"articles\": \"5f9b4a659305303bd220fd96,5f9b4a889305303bd220fd97,5f9b4b49d7760c3ce8847441\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/articles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "articles"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取全部文章标签",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "pm.test(\"response is valid\", function () {",
+              "    let jsonData = pm.response.json();",
+              "    let data = jsonData.data;",
+              "    pm.expect(data.length).to.eql(2);",
+              "    pm.expect(data[0].name).to.include(\"计算机\");",
+              "    pm.expect(data[1].name).to.include(\"数学\");",
+              "});",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"articles\": \"5f9b4a659305303bd220fd96,5f9b4a889305303bd220fd97,5f9b4b49d7760c3ce8847441\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/user/articleTags",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user",
+            "articleTags"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "新建阅读记录",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "   pm.expect(pm.response.text()).to.include(\"id\");",
+              "});",
+              "",
+              "pm.environment.set(\"recordId\", jsonData.data.id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"record\": {\n        \"previous_page\": 10,\n        \"current_page\": 20,\n        \"read_hours\": 0,\n        \"read_minutes\": 0,\n        \"read_seconds\": 5,\n        \"nth_read\": 1\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "records"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "每次阅读统计列表",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"response is success\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/record-list",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "record-list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "阅读记录列表",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "   pm.expect(jsonData.data.records.length).to.eql(1);",
+              "    pm.expect(pm.response.text()).to.include(\"stats\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/records?nth=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "records"
+          ],
+          "query": [
+            {
+              "key": "nth",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "阅读日历",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"response is success\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"成功\");",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.test(\"response is valid\", function () {    ",
+              "    pm.expect(jsonData.data.days.length).to.gte(28);",
+              "    pm.expect(jsonData.data.days.length).to.lte(31);",
+              "    pm.expect(jsonData.data.month).to.gte(1);",
+              "    pm.expect(jsonData.data.month).to.lte(12);",
+              "    pm.expect(pm.response.text()).to.include(\"true\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/books/{{bookId}}/calendar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "{{bookId}}",
+            "calendar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取vip套餐列表",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/vip",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "vip"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取支付方式列表",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/payments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "payments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取vip背景图",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"commonImage\": {\n        \"name\": \"vip背景图\",\n        \"type\": 0, \n        \"description\": \"vip背景图\",\n        \"url\": \"\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/commonimages/vipbanner",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "commonimages",
+            "vipbanner"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "查询书库书籍",
+      "request": {
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/bookoriginal/?q=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "bookoriginal",
+            ""
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "新增推荐书目",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"recommend\": {\n        \"reason\": \"这书不错\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/books/5fe293d9e4a38328ccd93442/recommend",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "books",
+            "5fe293d9e4a38328ccd93442",
+            "recommend"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取用户推荐书目列表",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "userId",
+            "value": "5fe293c7e4a38328ccd93441",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/user/recommends?userId=5fe293c7e4a38328ccd93441",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "user",
+            "recommends"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "5fe293c7e4a38328ccd93441"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "获取推荐书籍详情",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/recommends/6038213cdf0dad2ec15a12c1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recommends",
+            "6038213cdf0dad2ec15a12c1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "点赞推荐书籍",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/recommends/6038213cdf0dad2ec15a12c1/like",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recommends",
+            "6038213cdf0dad2ec15a12c1",
+            "like"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "取消点赞推荐书籍",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/recommends/6038213cdf0dad2ec15a12c1/unlike",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recommends",
+            "6038213cdf0dad2ec15a12c1",
+            "unlike"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "删除用户推荐",
+      "request": {
+        "method": "DELETE",
+        "header": [{
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "description": ""
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/recommends/6038280b953b272fece29f4d",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recommends",
+            "6038280b953b272fece29f4d"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

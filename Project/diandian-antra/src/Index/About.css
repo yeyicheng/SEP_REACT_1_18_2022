@@ -1,0 +1,39 @@
+.about {
+    background-color: #F0F3F5;
+}
+
+.main-wrapper {
+    margin-top: -1vw;
+    height: calc(100vh - 3vw - 8.5vw);
+}
+
+.main {
+    background-color: #fff;
+    width: 55vw;
+    margin: 0 auto;
+    font-size: 1vw;
+    padding: 1vw 4vw;
+}
+
+.main .lt {
+    width: 35vw;
+}
+
+.main .rt {
+    width: calc(274 / 300.0 * 40vw);
+}
+
+.footer {
+    color: #fff;
+    background-color: #494D56;
+    padding: 1vw 4vw 1.5vw 4vw;
+    font-size: 1vw;
+}
+
+.footer div {
+    padding: 1vw 0;
+}
+
+.footer span {
+    color: rgba(255, 255, 255, .5);
+}

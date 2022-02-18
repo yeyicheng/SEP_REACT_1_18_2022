@@ -1,0 +1,110 @@
+.modal {
+    background-color: rgba(0,0,0,.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.window {
+    background-color: #fff;
+    width: 50vw;
+    font-size: 1vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50vh - 15vw);
+    margin: 0 auto;
+    padding: 5vw 0;
+    z-index: 10000;
+}
+
+.window .close {
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+    width: 1vw;
+    height: 1vw;
+}
+
+.window .close img {
+    width: 100%;
+    height: 100%;
+}
+
+.window .title {
+    margin-bottom: 2.5vw;
+    font-weight: bold;
+}
+
+.window .form .formItem {
+    position: relative;
+}
+
+.window .form .formItem input {
+    border: solid 1px #BFBFBF;
+    border-radius: 12vw;
+    padding: .8vw 1.8vw;
+    width: 18vw;
+}
+
+.window .form .formItem:not(:last-child) input {
+    margin-bottom: 1.5vw;
+}
+
+.window .form .formItem input::placeholder {
+    font-size: 1vw;
+}
+
+.window .form .formItem .btnCode {
+    position: absolute;
+    top: calc(50% - .35vw);
+    right: 1.8vw;
+    color: #00BBF4;
+}
+
+.window .hint {
+    color: red;
+    font-size: .8vw;
+    text-align: left;
+    margin-top: .5vw;
+    width: 18vw;
+}
+
+.window .submit {
+    font-size: 1vw;
+    padding: .8vw 1.8vw;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 1vw;
+    border-radius: 2vw;
+    width: 18vw;
+}
+
+.window .social {
+    margin: 2.5vw 0;
+}
+
+.window .social .socialItem {
+    width: 3vw;
+    height: 3vw;
+}
+
+.window .social .socialItem:first-child {
+    margin-right: 3vw;
+}
+
+.window .social .socialItem img {
+    width: 100%;
+    height: 100%;
+}
+
+.window .agreement {
+    color: #888;
+}
+
+.window .agreement a {
+    text-decoration: underline;
+}

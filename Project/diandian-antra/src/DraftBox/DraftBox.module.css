@@ -1,0 +1,98 @@
+.draftBox {
+    background-color: #F0F3F5;
+}
+.draftBox .mainWrapper {
+    width: 65%;
+    height: calc(100vh - 3vw - 8.5vw);
+}
+.draftBox .mainWrapper .body {
+    background-color: #fff;
+    width: 100%;
+    height: 50vh;
+    padding: 1vw 2vw 2vw 2vw;
+    overflow-y: scroll;
+}
+.draftBox .mainWrapper .body .articleItem {
+    width: 100%;
+    padding: 0;
+    border-bottom:  solid 1px #EEE;
+}
+.draftBox .mainWrapper .body .articleItem .lt .title {
+    font-size: 1.2vw;
+    margin: 1.75vw 0 .75vw 0;
+}
+.draftBox .mainWrapper .body .articleItem .lt .subtitle {
+    font-size: 1vw;
+    color: #888;
+    margin-bottom: 1.8vw;
+}
+.draftBox .mainWrapper .body .articleItem .rt .btn {
+    width: 6vw;
+    height: 2vw;
+    font-weight: bold;
+    font-size: 1.35vw;
+    margin-left: 1.5vw;
+    padding: .5vw 1vw;
+    text-align: center;
+    cursor: pointer;
+}
+.draftBox .mainWrapper .body .articleItem .rt .btn.btnDel {
+    border: solid 2px #000;
+    color: #000;
+    opacity: .5;
+}
+.draftBox .mainWrapper .body .articleItem .rt .btn.btnDel:hover {
+    border: solid 2px #000;
+    color: #000;
+    opacity: 1;
+}
+.draftBox .mainWrapper .body .articleItem .rt .btn.btnEdit {
+    border: solid 2px #00BBF4;
+    color: #00BBF4;
+    opacity: .7;
+}
+.draftBox .mainWrapper .body .articleItem .rt .btn.btnEdit:hover {
+    border: solid 2px #00BBF4;
+    color: #00BBF4;
+    opacity: 1;
+}
+.draftBox .mainWrapper .body .gotoTop {
+    width: 4vw;
+    height: 4vw;
+    background-image: url("../images/article_detail/back up1@3x.png");
+    background-size: 100% 100%;
+    position: absolute;
+    right: -5vw;
+    bottom: -2vw;
+}
+.draftBox .mainWrapper .body .gotoTop:hover {
+    background-image: url("../images/article_detail/back up2@3x.png");
+}
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,.3);
+    z-index: 50;
+}
+.modal .warningBox {
+    z-index: 100;
+    background-color: #fff;
+    height: 16vw;
+}
+.modal .warningBox .first {
+    padding: 2vw 0;
+    font-size: 1.5vw;
+}
+.modal .warningBox .second {
+    padding: 1vw 0;
+    font-size: 1.2vw;
+}
+.modal .warningBox .second .btn {
+    width: 6vw;
+    height: 2vw;
+    padding: .5vw 1vw;
+    text-align: center;
+}
+.modal .warningBox .second .btnConfirm {
+    color: #00BBF4;
+}
