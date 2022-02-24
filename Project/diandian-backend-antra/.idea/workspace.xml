@@ -1,75 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e8eb9ec-940f-4b91-9b7c-d5cdbf00ea2e" name="Default Changelist" comment="文档更新;">
-      <change beforePath="$PROJECT_DIR$/.idea/Reader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/diandian-backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ArticleComment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ArticleCommentReport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ArticleCommentReportLabel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Book.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BookComment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BookOriginal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BookOriginalCategory.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BookReport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BookReportLabel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BookResource.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BookResourceItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Bookshelf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Catalog.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CommentReport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CommentReportLabel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CommonImage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Feedback.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Music.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/MusicCategory.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Note.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/NoteImage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Notice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/NoticeType.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/PaymentMethod.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Plan.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/RandomNote.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/RandomNoteImage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReadRecord.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Recommend.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Report.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReportContent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReportDict.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReportLabel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReportPic.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Review.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Update.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ViPPlan.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/articlecommentreports.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/articlecomments.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/articles.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/articles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/bookcomments.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/bookoriginal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/bookreports.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/bookresources.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/books.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/bookshelves.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/commentreports.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/commonimages.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/feedbacks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/mob.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/musics.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/notices.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/payments.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/plans.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/profiles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/randomnotes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/recommends.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/reportdicts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/tags.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/updates.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/vip.js" beforeDir="false" />
-    </list>
+    <list default="true" id="9e8eb9ec-940f-4b91-9b7c-d5cdbf00ea2e" name="Default Changelist" comment="文档更新;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +61,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -266,7 +198,7 @@
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="16.13.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -464,6 +396,8 @@
       <workItem from="1645165830172" duration="200000" />
       <workItem from="1645174595422" duration="311000" />
       <workItem from="1645174977300" duration="3701000" />
+      <workItem from="1645246393751" duration="236000" />
+      <workItem from="1645246700793" duration="9000" />
     </task>
     <task id="LOCAL-00021" summary="BookComment模型;">
       <created>1630561658137</created>
@@ -974,7 +908,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../阅读器.postman_test_run.json" />
+    <entry file="file://$USER_HOME$/阅读器.postman_test_run.json" />
     <entry file="file://$PROJECT_DIR$/node_modules/newman/lib/reporters/html/template-default.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
