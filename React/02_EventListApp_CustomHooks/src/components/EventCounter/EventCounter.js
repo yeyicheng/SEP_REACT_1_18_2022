@@ -1,12 +1,15 @@
-import React from 'react';
-import { withEventData } from '../../hoc/withEventData';
+import React, {useEffect, useState} from 'react';
+import {store} from "../../redux/store";
+
 class EventCounter extends React.Component {
-  render() {
-    const { events } = this.props;
-    return <h1>{events.length}</h1>;
+  componentDidMount() {
+    store.subscribe(() => {
+      this.forceUpdate()
+    })
+  }
+  render(){
+    return <h1>{store.getState()['value']}</h1>;
   }
 }
 
-const EventCounterConnector = withEventData(EventCounter);
-
-export default EventCounterConnector;
+export default EventCounter;

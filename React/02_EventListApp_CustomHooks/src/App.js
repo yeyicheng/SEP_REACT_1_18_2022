@@ -17,7 +17,7 @@ const PAGESINFO = {
 class App extends React.Component {
   state = {
     currentPage: PAGESINFO.EventManager,
-    pagesInfo: PAGESINFO,
+    pagesInfo: PAGESINFO
   };
 
   hanldePageChange = (newPageInfo) => {
@@ -26,22 +26,28 @@ class App extends React.Component {
     });
   };
 
+  handleCountChange = (newCount) => {
+    this.setState({
+      count: newCount
+    })
+  }
+
   render() {
     const { currentPage, pagesInfo } = this.state;
 
     let curPage = null;
     switch (currentPage) {
       case PAGESINFO.EventManager:
-        curPage = <EventApp></EventApp>;
+        curPage = <EventApp handleCountChange={this.handleCountChange}/>;
         break;
       case PAGESINFO.UpComingEvent:
-        curPage = <UpComingEvent></UpComingEvent>;
+        curPage = <UpComingEvent/>;
         break;
       case PAGESINFO.CounterClass:
-        curPage = <CounterClass></CounterClass>;
+        curPage = <CounterClass/>;
         break;
       case PAGESINFO.CounterFn:
-        curPage = <CounterFn></CounterFn>;
+        curPage = <CounterFn/>;
         break;
       default:
     }
@@ -49,9 +55,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header
-          pagesInfo={pagesInfo}
-          hanldePageChange={this.hanldePageChange}
-        ></Header>
+    pagesInfo={pagesInfo}
+    hanldePageChange={this.hanldePageChange}
+    />
         {curPage}
       </div>
     );

@@ -8,7 +8,7 @@ import EventTable from '../EventTable/EventTable';
 import Button from '../Button/Button';
 import { useEventData } from '../../hooks/useEventData';
 
-const EventApp = () => {
+const EventApp = ({handleCountChange, count}) => {
   const [dataCol] = React.useState([
     'Event Name',
     'Start Date',
@@ -100,6 +100,7 @@ const EventApp = () => {
           <EventDataRow
     key={event.id}
     event={event.editEvent}
+    handleCountChange={handleCountChange}
     actions={[
       {
         actionName: 'Save',

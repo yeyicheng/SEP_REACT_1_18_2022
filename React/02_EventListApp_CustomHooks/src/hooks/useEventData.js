@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   getAllEvents,
   addNewEvent,
@@ -6,9 +6,11 @@ import {
   editEvent,
 } from '../services/event.api';
 import { EventData } from '../models/EventData';
+import {store} from "../redux/store";
 
 export const useEventData = () => {
   const [events, setEvents] = useState([]);
+
   const generateEditEventState = (event) => {
     event.isEditing = false;
     event.editEvent = new EventData(
@@ -42,8 +44,10 @@ export const useEventData = () => {
           return event.id !== deletedEvent.id;
         })
       );
+      store.dispatch({type: "counter/decremented"});
     });
   };
+
   // API CALL
   const handleAddEvent = (addEvent) => {
     return addNewEvent(addEvent).then(
@@ -51,6 +55,7 @@ export const useEventData = () => {
         const newEvent = new EventData(eventName, startDate, endDate, id);
         generateEditEventState(newEvent);
         setEvents([...events, newEvent]);
+        store.dispatch({type: "counter/incremented"});
       }
     );
   };
@@ -82,7 +87,7 @@ export const useEventData = () => {
     );
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const { fetchResult, controller } = getAllEvents();
     fetchResult.then((data) => {
       const events = data.map(({ eventName, startDate, endDate, id }) => {
@@ -92,6 +97,10 @@ export const useEventData = () => {
       });
 
       setEvents(events);
+
+      while (store.getState().value < events.length) {
+        store.dispatch({type: "counter/incremented"});
+      }
     });
     return () => {
       controller.abort();
@@ -104,6 +113,6 @@ export const useEventData = () => {
     handleDeleteEvent,
     handleAddEvent,
     handleSetEdit,
-    handleOnChangeEditEvent
+    handleOnChangeEditEvent,
   ];
 };
