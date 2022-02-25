@@ -20,11 +20,11 @@ export default function FifthScreen() {
             <div className={'d-flex justify-content-between px-5'}>
                 <div className={'text-sm-start px-5'}>
                     <div className={'d-flex'}>
-                        <Form.Group className="mb-3 col-sm-6 pe-3" controlId="formBasicFirst">
+                        <Form.Group className="mb-3 col-sm-6 me-1" controlId="formBasicFirst">
                             <Form.Label>First Name *</Form.Label>
                             <Form.Control type="text" placeholder="" />
                         </Form.Group>
-                        <Form.Group className="mb-3 col-sm-6" controlId="formBasicLast">
+                        <Form.Group className="mb-3 col-sm-6 ms-1" controlId="formBasicLast">
                             <Form.Label>Last Name *</Form.Label>
                             <Form.Control type="text" placeholder="" />
                         </Form.Group>
@@ -40,6 +40,10 @@ export default function FifthScreen() {
                             <Form.Label>Message *</Form.Label>
                             <textarea rows={2} className={'w-100'} style={{borderRadius: '.25rem'}}/>
                         </Form.Group>
+                    </div>
+                    <div className={'d-flex justify-content-center'}>
+                        <button className={'text-white mt-5 px-3 py-2 bg-transparent'}
+                                style={{fontSize: '16pt', width: '90pt', border: "solid 2px white", outline: "none"}}>Submit</button>
                     </div>
                 </div>
             </div>

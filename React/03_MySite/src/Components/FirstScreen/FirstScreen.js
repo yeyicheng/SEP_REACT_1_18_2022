@@ -16,9 +16,9 @@ export default function FirstScreen() {
             <p style={{fontSize: '33pt'}}>UI Developer. UX Desinger. Problem Solver.</p>
         </div>
         <div>
-            <button className={'text-white px-3 py-2 me-2 bg-transparent'}
+            <button className={'text-white px-3 py-2 me-5 bg-transparent'}
                     style={{fontSize: '16pt', width: '90pt', border: "solid 2px white", outline: "none"}}>Info</button>
-            <button className={'text-white px-3 py-2 me-2 bg-transparent'}
+            <button className={'text-white px-3 py-2 me-5 bg-transparent'}
                     style={{fontSize: '16pt', width: '90pt', border: "solid 2px white", outline: "none"}}>Portfolio</button>
         </div>
     </div>)
