@@ -4,6 +4,7 @@ import SecondScreen from "./Components/SecondScreen/SecondScreen";
 import ThirdScreen from "./Components/ThirdScreen/ThirdScreen";
 import FourthScreen from "./Components/FourthScreen/FourthScreen";
 import FifthScreen from "./Components/FifthScreen/FifthScreen";
+import SixthScreen from "./Components/SixthScreen/SixthScreen";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <ThirdScreen/>
       <FourthScreen/>
         <FifthScreen/>
+        <SixthScreen/>
     </div>
   );
 }
