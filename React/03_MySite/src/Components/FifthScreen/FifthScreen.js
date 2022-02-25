@@ -21,7 +21,7 @@ export default function FifthScreen() {
                 <div className={'text-sm-start px-5'}>
                     <div className={'d-flex'}>
                         <Form.Group className="mb-3 col-sm-6 pe-3" controlId="formBasicFirst">
-                            <Form.Label>Firs Name *</Form.Label>
+                            <Form.Label>First Name *</Form.Label>
                             <Form.Control type="text" placeholder="" />
                         </Form.Group>
                         <Form.Group className="mb-3 col-sm-6" controlId="formBasicLast">
