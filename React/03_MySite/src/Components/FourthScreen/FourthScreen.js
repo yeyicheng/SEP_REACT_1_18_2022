@@ -1,12 +1,13 @@
-import Icon1 from '../../images/developerdesign.svg';
-import Icon2 from '../../images/responsivedesign.svg';
-import Icon3 from '../../images/innovativesolutions.svg';
-import Icon4 from '../../images/passion.svg';
-import Block from "../SecondScreen/Block";
 import Block2 from "./Block";
+import {useEffect, useState} from "react";
 
 export default function FourthScreen() {
-    return (<div className={'w-100 d-flex flex-column justify-content-center align-items-center px-5'}
+    const [anchorTarget, setAnchorTarget] = useState(null);
+    useEffect(() => {
+        setAnchorTarget(document.getElementById("main"));
+    }, []);
+
+    return (<div id="portfolio" className={'w-100 d-flex flex-column justify-content-center align-items-center px-5'}
     style={{height: '100vh', background: '#59585d'}}>
         <div style={{fontSize: '28pt'}}
         className={'text-white'}>Projects and Portfolio</div>
@@ -22,8 +23,10 @@ export default function FourthScreen() {
 
         </div>
         <div className={'my-5'}>
-            <button className={'text-white px-3 py-2 me-2 bg-transparent'}
-                    style={{fontSize: '16pt', width: '140pt', border: "solid 2px white", outline: "none"}}>More Projects</button>
+            <button
+                onClick={() => {anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });}}
+                className={'text-white px-3 py-2 me-2 bg-transparent'}
+                style={{fontSize: '16pt', width: '140pt', border: "solid 2px white", outline: "none"}}>More Projects</button>
         </div>
     </div>)
 }

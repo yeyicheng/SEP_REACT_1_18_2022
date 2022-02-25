@@ -1,7 +1,7 @@
 import {Form} from "react-bootstrap";
 
 export default function FifthScreen() {
-    return (<div className={'w-100 d-flex flex-column justify-content-center align-items-center text-white px-5'}
+    return (<div id="contact" className={'w-100 d-flex flex-column justify-content-center align-items-center text-white px-5'}
     style={{height: '100vh', background: '#3a3a3a'}}>
         <p style={{fontSize: '28pt'}} className={'mb-5'}>Contact</p>
         <div className={'d-flex justify-content-between px-5'}>

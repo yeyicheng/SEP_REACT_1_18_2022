@@ -1,7 +1,13 @@
 import Background from '../../images/aboutbackground.jpg';
+import {useEffect, useState} from "react";
 
 export default function SecondScreen() {
-    return (<div className={'w-100 d-flex flex-column justify-content-center align-items-center'}
+    const [anchorTarget, setAnchorTarget] = useState(null);
+    useEffect(() => {
+        setAnchorTarget(document.getElementById("contact"));
+    }, []);
+
+    return (<div id="info" className={'w-100 d-flex flex-column justify-content-center align-items-center'}
                  style={{padding: '3% 0',
                      background: `linear-gradient( rgba(225, 225, 225, 0.94), rgba(225, 225, 225, 0.94) ), url(${Background})`,
                      backgroundRepeat: 'no-repeat',
@@ -22,8 +28,10 @@ export default function SecondScreen() {
         <p className={'text-sm-start col-sm-8 mb-2'} style={{fontSize: '12pt'}}>Loves to learn new things</p>
 
         <div>
-            <button className={'text-black px-3 py-2 me-2 bg-transparent col-sm-8'}
-                    style={{fontSize: '16pt', width: '90pt', border: "solid 2px black", outline: "none"}}>Contact</button>
+            <button
+                onClick={() => {anchorTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });}}
+                className={'text-black px-3 py-2 me-2 bg-transparent col-sm-8'}
+                style={{fontSize: '16pt', width: '90pt', border: "solid 2px black", outline: "none"}}>Contact</button>
         </div>
     </div>)
 }
