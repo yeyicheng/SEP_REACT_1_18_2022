@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 export default function FourthScreen() {
     const [anchorTarget, setAnchorTarget] = useState(null);
     useEffect(() => {
-        setAnchorTarget(document.getElementById("main"));
+        setAnchorTarget(document.getElementById("portfolio"));
     }, []);
 
     return (<div id="portfolio" className={'w-100 d-flex flex-column justify-content-center align-items-center px-5'}
