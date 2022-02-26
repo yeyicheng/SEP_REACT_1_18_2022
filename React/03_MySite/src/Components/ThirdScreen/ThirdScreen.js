@@ -2,7 +2,7 @@ import Icon1 from '../../images/developerdesign.svg';
 import Icon2 from '../../images/responsivedesign.svg';
 import Icon3 from '../../images/innovativesolutions.svg';
 import Icon4 from '../../images/passion.svg';
-import Block from "../SecondScreen/Block";
+import Block from "./Block";
 
 export default function ThirdScreen() {
     return (<div className={'w-100 d-flex flex-wrap justify-content-center align-items-center bg-black'}
