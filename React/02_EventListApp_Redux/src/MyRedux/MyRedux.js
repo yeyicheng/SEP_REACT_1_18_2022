@@ -41,7 +41,6 @@ function myCreateStore(reducerFn) {
     });
   }
   function subscribe(subscriberFn) {
-    console.log(subscriberList);
     subscriberList.push(subscriberFn);
 
     return () => {
