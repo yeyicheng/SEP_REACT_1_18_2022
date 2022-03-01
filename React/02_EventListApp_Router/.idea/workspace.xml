@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e334be3-a976-4eb7-a13b-ca0a3a26220d" name="Changes" comment="" />
+    <list default="true" id="7e334be3-a976-4eb7-a13b-ca0a3a26220d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../02_EventListApp_Redux/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../02_EventListApp_Redux/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +31,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -52,6 +57,7 @@
       <workItem from="1646098985448" duration="3118000" />
       <workItem from="1646144226021" duration="5000" />
       <workItem from="1646146833766" duration="807000" />
+      <workItem from="1646170828583" duration="1722000" />
     </task>
     <servers />
   </component>
@@ -68,5 +74,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
   </component>
 </project>
