@@ -1,0 +1,36 @@
+.event-app {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 900px;
+}
+.event-app__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.event-app__header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.event-app__table tr {
+  height: 60px;
+  border-top: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.event-app__table th {
+  text-align: left;
+  background-color: rgb(150, 169, 230);
+  padding: 0 20px;
+}
+.event-app__table td {
+  padding: 0 20px;
+}
+
+.event-app__table th:last-child {
+  text-align: right;
+  background-color: rgb(150, 169, 230);
+}
+
+.event-app__table td input {
+  padding: 5px 10px;
+}

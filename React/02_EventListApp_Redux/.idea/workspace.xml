@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e334be3-a976-4eb7-a13b-ca0a3a26220d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/WithAbort/WithAbort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useAbort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/eventDataReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/appStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyReactRedux/MyReactRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyReactRedux/MyReactRedux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyRedux/MyRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyRedux/MyRedux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Counter/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Counter/Counter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Counter/CounterFn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Counter/CounterFn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventAddRow/EventAddRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventAddRow/EventAddRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventApp/EventApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventApp/EventApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventCounter/EventCounter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventCounter/EventCounter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventDataRow/EventDataRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventDataRow/EventDataRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventEditRow/EventEditRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventEditRow/EventEditRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventRow/EventRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventRow/EventRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EventTable/EventTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EventTable/EventTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpComingEvents/UpComingEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpComingEvents/UpComingEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WithEventData/WithEventData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WithEventData/WithEventData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/withEventData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/withEventData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useEventData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useEventData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/EventData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/EventData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/event.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/event.api.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="25Z0xeHOZiFob6sxsBfh85V3aFz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e334be3-a976-4eb7-a13b-ca0a3a26220d" name="Changes" comment="" />
+      <created>1645719548707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645719548707</updated>
+      <workItem from="1645719549914" duration="5464000" />
+      <workItem from="1646098985448" duration="3118000" />
+      <workItem from="1646144226021" duration="5000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
