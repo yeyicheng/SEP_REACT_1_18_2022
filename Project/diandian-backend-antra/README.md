@@ -1,2 +1,2 @@
 # reader
-阅读器+
+DianDian web simplified react version.
